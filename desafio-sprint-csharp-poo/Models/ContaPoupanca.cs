@@ -1,6 +1,6 @@
 namespace BedrockBankCorp.Models
 {
-    class ContaPoupanca : ContaBancaria
+    class ContaPoupanca
     {
 
     }
