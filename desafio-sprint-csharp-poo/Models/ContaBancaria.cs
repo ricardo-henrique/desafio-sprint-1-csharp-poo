@@ -14,6 +14,16 @@ namespace BedrockBankCorp.Models
             AccountType = type;
         }
 
+        public virtual void Deposit(decimal amount)
+        {
+            if (amount <= 0)
+            {
+                Console.WriteLine("O valor tem que ser maior que 0");
+            }
 
+            Balance += amount;
+        }
+
+        public abstract bool Withdraw(decimal amount);
     }
 }
