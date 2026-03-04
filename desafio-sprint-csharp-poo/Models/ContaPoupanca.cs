@@ -2,11 +2,12 @@ namespace BedrockBankCorp.Models
 {
     class ContaPoupanca : ContaBancaria
     {
-        public decimal InterestRate { get; private set; }
+        public decimal InterestRate { get; }
+        public const decimal StandardRate = 0.05m;
 
-        public ContaPoupanca(int accNum, string name, decimal initialBalance, decimal interestRate) : base(accNum, name, initialBalance, "Conta Poupança")
+        public ContaPoupanca(int accNum, string name, decimal initialBalance) : base(accNum, name, initialBalance, "Conta Poupança")
         {
-            InterestRate = interestRate;
+            InterestRate = StandardRate;
         }
 
         public override bool Withdraw(decimal amount)
