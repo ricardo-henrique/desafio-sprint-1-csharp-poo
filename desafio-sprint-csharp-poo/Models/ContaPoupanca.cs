@@ -14,6 +14,7 @@ namespace BedrockBankCorp.Models
             if (amount <= 0)
             {
                 Console.WriteLine("Transação Negada: O valor de saque tem que ser maior que 0");
+                return false;
             }
 
             if (amount > Balance)
