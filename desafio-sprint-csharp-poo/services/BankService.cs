@@ -1,5 +1,4 @@
 using System.Text.Json;
-using System.IO;
 using BedrockBankCorp.Models;
 
 namespace BedrockBankCorp.Service
@@ -23,7 +22,14 @@ namespace BedrockBankCorp.Service
             if (!File.Exists(FilePath)) return new List<ContaBancaria>();
 
             string json = File.ReadAllText(FilePath);
-            return JsonSerializer.Deserialize<List<ContaBancaria>>(json) ?? new List<ContaBancaria>();
+            var list = JsonSerializer.Deserialize<List<ContaBancaria>>(json) ?? new List<ContaBancaria>();
+
+            if (list.Count > 0)
+            {
+                int maxId = list.Max(a => int.Parse(a.AccountNumber.Split('-')[1]));
+                ContaBancaria.SetNextNumber(maxId + 1);
+            }
+            return list;
         }
     }
 }

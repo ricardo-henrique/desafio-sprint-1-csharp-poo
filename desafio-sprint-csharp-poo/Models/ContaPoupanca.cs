@@ -5,7 +5,7 @@ namespace BedrockBankCorp.Models
         public decimal InterestRate { get; }
         public const decimal StandardRate = 0.05m;
 
-        public ContaPoupanca(int accNum, string name, decimal initialBalance) : base(accNum, name, initialBalance, "Conta Poupança")
+        public ContaPoupanca(string name, decimal initialBalance) : base(name, initialBalance, "Conta Poupança")
         {
             InterestRate = StandardRate;
         }

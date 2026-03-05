@@ -7,13 +7,14 @@ namespace BedrockBankCorp.Models
     [JsonDerivedType(typeof(ContaEmpresarial), typeDiscriminator: "Conta Empresarial")]
     public abstract class ContaBancaria
     {
-        public int AccountNumber { get; }
+        private static int _nextAccountNumber = 1;
+        public string AccountNumber { get; private set; }
         public string Holder { get; }
         public decimal Balance { get; protected set; }
         public string AccountType { get; }
-        protected ContaBancaria(int accNum, string name, decimal initialBalance, string type)
+        protected ContaBancaria(string name, decimal initialBalance, string type)
         {
-            AccountNumber = accNum;
+            AccountNumber = $"001-{_nextAccountNumber:D4}";
             Holder = name;
             Balance = initialBalance;
             AccountType = type;
@@ -30,5 +31,10 @@ namespace BedrockBankCorp.Models
         }
 
         public abstract bool Withdraw(decimal amount);
+
+        public static void SetNextNumber(int next)
+        {
+            _nextAccountNumber = next;
+        }
     }
 }
