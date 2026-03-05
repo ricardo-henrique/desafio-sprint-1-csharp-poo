@@ -4,7 +4,7 @@ namespace BedrockBankCorp.Models
     {
         private const decimal WithdrawalFee = 2.5m;
 
-        public ContaCorrente(int accNum, string name, decimal initialBalance) : base(accNum, name, initialBalance, "Conta Corrente")
+        public ContaCorrente(string name, decimal initialBalance) : base(name, initialBalance, "Conta Corrente")
         {
         }
 

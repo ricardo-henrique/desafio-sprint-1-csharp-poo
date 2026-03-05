@@ -1,19 +1,21 @@
-namespace BedrockBankCorp.Menu
+using BedrockBankCorp.Models;
+
+namespace BedrockBankCorp.Menus
 {
     class Menu
     {
-        public void DisplayOptionsTitle(string Title)
+        protected void DisplayOptionsTitle(string title)
         {
-            int amountOfLetters = Title.Length;
+            int amountOfLetters = title.Length;
             string asterisk = string.Empty.PadLeft(amountOfLetters, '*');
             Console.WriteLine(asterisk);
-            Console.WriteLine(Title);
+            Console.WriteLine(title);
             Console.WriteLine(asterisk + "\n");
         }
 
-        public virtual void Execute()
+        public virtual void Execute(List<ContaBancaria> registeredAccounts)
         {
-
+            Console.Clear();
         }
     }
 }

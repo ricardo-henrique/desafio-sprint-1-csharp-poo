@@ -4,7 +4,7 @@ namespace BedrockBankCorp.Models
     {
         public decimal LoanLimit { get; set; }
 
-        public ContaEmpresarial(int accNum, string name, decimal initialBalance, decimal loanLimit) : base(accNum, name, initialBalance, "Conta Empresarial")
+        public ContaEmpresarial(string name, decimal initialBalance, decimal loanLimit) : base(name, initialBalance, "Conta Empresarial")
         {
             LoanLimit = loanLimit;
         }
