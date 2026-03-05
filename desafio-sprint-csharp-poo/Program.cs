@@ -11,8 +11,8 @@ internal class Program
 
         Dictionary<int, Menu> options = new Dictionary<int, Menu>();
         options.Add(1, new MenuRegisterAccount());
-        options.Add(2, new MenuDisplayAccounts());
-        options.Add(4, new MenuExit());
+        options.Add(2, new MenuLogin());
+        options.Add(3, new MenuExit());
 
         void DisplayLogo()
         {
@@ -29,8 +29,23 @@ internal class Program
         {
             DisplayLogo();
             Console.WriteLine("Digite 1 para registrar conta");
-            Console.WriteLine("Digite 2 para mostrar todas as contas");
-            Console.WriteLine("Digite 4 para sair do sistema");
+            Console.WriteLine("Digite 2 para logar na sua conta");
+            Console.WriteLine("Digite 3 para sair do sistema");
+
+            Console.Write("\nDigite a sua opção: ");
+            int selectedOption = int.Parse(Console.ReadLine()!);
+
+            if (options.ContainsKey(selectedOption))
+            {
+                Menu menuToBeDisplayed = options[selectedOption];
+                menuToBeDisplayed.Execute(registeredAccounts);
+
+                if (selectedOption > 0) DisplayMenuOptions();
+            }
+            else
+            {
+                Console.WriteLine("Opção inválida");
+            }
         }
 
         DisplayMenuOptions();

@@ -5,7 +5,7 @@ namespace BedrockBankCorp.Models
         public decimal InterestRate { get; }
         public const decimal StandardRate = 0.05m;
 
-        public ContaPoupanca(string name, decimal initialBalance) : base(name, initialBalance, "Conta Poupança")
+        public ContaPoupanca(string name, decimal initialBalance, string password) : base(name, initialBalance, "Conta Poupança", password)
         {
             InterestRate = StandardRate;
         }
@@ -26,6 +26,7 @@ namespace BedrockBankCorp.Models
 
             Balance -= amount;
             Console.WriteLine($"Você sacou {amount:C}. Novo Saldo: {Balance:C}");
+            Console.Clear();
             return true;
         }
 

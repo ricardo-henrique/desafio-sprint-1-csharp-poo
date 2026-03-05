@@ -9,12 +9,14 @@ namespace BedrockBankCorp.Models
     {
         private static int _nextAccountNumber = 1;
         public string AccountNumber { get; private set; }
+        public string Password { get; private set; }
         public string Holder { get; }
         public decimal Balance { get; protected set; }
         public string AccountType { get; }
-        protected ContaBancaria(string name, decimal initialBalance, string type)
+        protected ContaBancaria(string name, decimal initialBalance, string type, string password)
         {
             AccountNumber = $"001-{_nextAccountNumber:D4}";
+            Password = password;
             Holder = name;
             Balance = initialBalance;
             AccountType = type;

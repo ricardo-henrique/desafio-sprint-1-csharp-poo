@@ -4,7 +4,7 @@ namespace BedrockBankCorp.Models
     {
         public decimal LoanLimit { get; set; }
 
-        public ContaEmpresarial(string name, decimal initialBalance, decimal loanLimit) : base(name, initialBalance, "Conta Empresarial")
+        public ContaEmpresarial(string name, decimal initialBalance, decimal loanLimit, string password) : base(name, initialBalance, "Conta Empresarial", password)
         {
             LoanLimit = loanLimit;
         }
@@ -33,6 +33,7 @@ namespace BedrockBankCorp.Models
             {
                 Console.WriteLine($"Retirou {amount:C}. Saldo novo: {Balance:C}");
             }
+            Console.Clear();
             return true;
         }
 

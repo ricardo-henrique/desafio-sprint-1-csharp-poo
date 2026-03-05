@@ -4,7 +4,7 @@ namespace BedrockBankCorp.Models
     {
         private const decimal WithdrawalFee = 2.5m;
 
-        public ContaCorrente(string name, decimal initialBalance) : base(name, initialBalance, "Conta Corrente")
+        public ContaCorrente(string name, decimal initialBalance, string password) : base(name, initialBalance, "Conta Corrente", password)
         {
         }
 
@@ -16,6 +16,7 @@ namespace BedrockBankCorp.Models
             if (totalToDebit > Balance)
             {
                 Console.WriteLine($"Transação Negada: Saldo insuficiente");
+                Console.Clear();
                 return false;
             }
 
