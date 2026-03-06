@@ -2,7 +2,7 @@ using BedrockBankCorp.Models;
 
 namespace BedrockBankCorp.Menus
 {
-    class Menu
+    internal abstract class Menu
     {
         protected void DisplayOptionsTitle(string title)
         {
@@ -11,6 +11,17 @@ namespace BedrockBankCorp.Menus
             Console.WriteLine(asterisk);
             Console.WriteLine(title);
             Console.WriteLine(asterisk + "\n");
+        }
+
+        protected decimal GetAmountFromUser(string prompt = "Digite o valor: ")
+        {
+            Console.Write(prompt);
+            if (decimal.TryParse(Console.ReadLine(), out decimal amount))
+            {
+                return amount;
+            }
+            Console.WriteLine("Valor inválido. Considerando R$ 0,00.");
+            return 0;
         }
 
         public virtual void Execute(List<ContaBancaria> registeredAccounts)

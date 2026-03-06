@@ -12,7 +12,7 @@ internal class Program
         Dictionary<int, Menu> options = new Dictionary<int, Menu>();
         options.Add(1, new MenuRegisterAccount());
         options.Add(2, new MenuLogin());
-        options.Add(3, new MenuExit());
+        options.Add(-1, new MenuExit());
 
         void DisplayLogo()
         {
@@ -30,7 +30,7 @@ internal class Program
             DisplayLogo();
             Console.WriteLine("Digite 1 para registrar conta");
             Console.WriteLine("Digite 2 para logar na sua conta");
-            Console.WriteLine("Digite 3 para sair do sistema");
+            Console.WriteLine("Digite -1 para sair do sistema");
 
             Console.Write("\nDigite a sua opção: ");
             int selectedOption = int.Parse(Console.ReadLine()!);

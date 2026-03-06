@@ -5,7 +5,7 @@ namespace BedrockBankCorp.Service
 {
     public static class BankService
     {
-        private const string FilePath = "data/accounts.json";
+        private const string FilePath = "accounts.json";
         private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
         {
             WriteIndented = true

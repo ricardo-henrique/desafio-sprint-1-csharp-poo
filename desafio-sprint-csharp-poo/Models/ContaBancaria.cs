@@ -13,12 +13,14 @@ namespace BedrockBankCorp.Models
         public string Holder { get; }
         public decimal Balance { get; protected set; }
         public string AccountType { get; }
-        protected ContaBancaria(string name, decimal initialBalance, string type, string password)
+        protected ContaBancaria(string name, string password, string type)
         {
             AccountNumber = $"001-{_nextAccountNumber:D4}";
+            _nextAccountNumber++;
+
             Password = password;
             Holder = name;
-            Balance = initialBalance;
+            Balance = 0.00m;
             AccountType = type;
         }
 
@@ -32,7 +34,12 @@ namespace BedrockBankCorp.Models
             Balance += amount;
         }
 
-        public abstract bool Withdraw(decimal amount);
+        public virtual bool Withdraw(decimal amount)
+        {
+            if (amount > Balance) return false;
+            Balance -= amount;
+            return true;
+        }
 
         public static void SetNextNumber(int next)
         {

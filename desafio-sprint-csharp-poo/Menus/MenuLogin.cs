@@ -21,11 +21,13 @@ namespace BedrockBankCorp.Menus
                 Thread.Sleep(1500);
                 Console.Clear();
 
-                new MenuUserSession(account).Execute(registeredAccounts);
+                var session = new MenuUserSession(account);
+                session.Execute(registeredAccounts);
             }
             else
             {
                 Console.WriteLine("\nNúmero da conta ou senha incorretos");
+                Console.Clear();
             }
         }
     }
