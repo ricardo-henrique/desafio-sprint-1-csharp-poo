@@ -27,6 +27,7 @@ namespace BedrockBankCorp.Menus
             else
             {
                 Console.WriteLine("\nNúmero da conta ou senha incorretos");
+                Thread.Sleep(1500);
                 Console.Clear();
             }
         }

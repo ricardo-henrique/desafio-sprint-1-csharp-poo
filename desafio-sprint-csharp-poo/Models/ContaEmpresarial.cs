@@ -14,12 +14,14 @@ namespace BedrockBankCorp.Models
             if (amount <= 0)
             {
                 Console.WriteLine("Transação Negada: Valor de saque dever ser maior que 0");
+                Thread.Sleep(2000);
                 return false;
             }
 
             if (amount > (Balance + LoanLimit))
             {
                 Console.WriteLine("Transação negada: limite de empréstimo excedido.");
+                Thread.Sleep(2000);
                 return false;
             }
 
@@ -34,6 +36,7 @@ namespace BedrockBankCorp.Models
                 Console.WriteLine($"Retirou {amount:C}. Saldo novo: {Balance:C}");
             }
             Console.Clear();
+            Thread.Sleep(2500);
             return true;
         }
 
@@ -43,6 +46,11 @@ namespace BedrockBankCorp.Models
             {
                 Deposit(amount);
                 Console.WriteLine($"Emprestimo de {amount:C} creditado com sucesso na sua conta.");
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                Console.WriteLine("Emprestismo Negado: Limite de emprestimo excedido");
             }
         }
     }

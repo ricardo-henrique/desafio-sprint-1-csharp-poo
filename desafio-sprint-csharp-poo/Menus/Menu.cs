@@ -13,9 +13,9 @@ namespace BedrockBankCorp.Menus
             Console.WriteLine(asterisk + "\n");
         }
 
-        protected decimal GetAmountFromUser(string prompt = "Digite o valor: ")
+        protected decimal GetAmountFromUser()
         {
-            Console.Write(prompt);
+            Console.Write("Digite o valor: ");
             if (decimal.TryParse(Console.ReadLine(), out decimal amount))
             {
                 return amount;

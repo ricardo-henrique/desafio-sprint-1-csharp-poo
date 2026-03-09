@@ -28,6 +28,7 @@ namespace BedrockBankCorp.Menus
                 Console.WriteLine("Essa tipo não existe");
 
             Console.WriteLine("\nConta registrada com sucesso");
+            Thread.Sleep(2000);
             Console.Clear();
         }
     }

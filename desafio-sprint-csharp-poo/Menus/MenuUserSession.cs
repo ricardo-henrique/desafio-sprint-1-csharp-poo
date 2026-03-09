@@ -20,10 +20,15 @@ namespace BedrockBankCorp.Menus
                 Console.WriteLine($"=== Área DO CLIENTE ===");
                 Console.WriteLine($"=== {_contaLogada.AccountType.ToUpper()} | {_contaLogada.Holder} ===");
                 Console.WriteLine($"Saldo: {_contaLogada.Balance:C}");
+                if (_contaLogada is ContaEmpresarial emp)
+                {
+                    Console.WriteLine($"Limite de Empréstimo: {emp.LoanLimit:C}");
+                }
                 Console.WriteLine("\nOque deseja fazer?");
                 Console.WriteLine("\n1. Despositar");
                 Console.WriteLine("2. Sacar");
-                Console.WriteLine("3. Logout");
+                if (_contaLogada is ContaEmpresarial) Console.WriteLine("3. Solicitar Empréstimo");
+                Console.WriteLine("0. Logout");
 
                 Console.Write("\nEscolha uma operação: ");
                 string options = Console.ReadLine()!;
@@ -33,16 +38,23 @@ namespace BedrockBankCorp.Menus
                     case "1":
                         decimal dep = GetAmountFromUser();
                         _contaLogada.Deposit(dep);
-                        HandleSpecificAction();
+                        if (_contaLogada is ContaPoupanca poupanca)
+                        {
+                            poupanca.ApplyInterest();
+                        }
                         Console.WriteLine("Depósito concluído.");
                         Console.Clear();
                         break;
                     case "2":
-                        decimal saq = GetAmountFromUser("Valor para saque: ");
+                        decimal saq = GetAmountFromUser();
                         if (_contaLogada.Withdraw(saq))
                             Console.WriteLine("Saque realizado!");
+                            Thread.Sleep(2000);
                         break;
                     case "3":
+                        HandleSpecificAction();
+                        break;
+                    case "0":
                         logedIn = false;
                         Console.WriteLine("Saindo da Conta...");
                         Thread.Sleep(2000);
@@ -62,11 +74,8 @@ namespace BedrockBankCorp.Menus
 
         private void HandleSpecificAction()
         {
-            if (_contaLogada is ContaPoupanca poupanca)
-            {
-                poupanca.ApplyInterest();
-            }
-            else if (_contaLogada is ContaEmpresarial empresarial)
+
+            if (_contaLogada is ContaEmpresarial empresarial)
             {
                 empresarial.TakeLoan(GetAmountFromUser());
             }
